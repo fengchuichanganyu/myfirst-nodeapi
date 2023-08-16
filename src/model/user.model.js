@@ -10,15 +10,20 @@ const User = seq.define('mf_user',{
         primaryKey:true,
         comment:'用户id,唯一'
     },
-      user_name:{
-        type: DataTypes.STRING,
+    user_number:{
+        type: DataTypes.INTEGER,
         allowNull :false,
-        comment :'用户名'
+        comment :'学号'
     },
     password:{
         type:DataTypes.CHAR(64),
         allowNull:false,
         comment:'密码'
+    },
+    user_point:{
+        type:DataTypes.STRING,
+        allowNull:false,
+        comment:'特长'
     },
     
 },

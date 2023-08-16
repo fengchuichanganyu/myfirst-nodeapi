@@ -1,10 +1,10 @@
 const User =  require('../model/user.model')
 
 class UserService{
-    async createUser(user_name, password, userid){
+    async createUser(user_number, password, userid,user_point){
 
 
-        const res = await User.create({user_name,password, userid}) 
+        const res = await User.create({user_number,password, userid,user_point}) 
         //  console.log(res)
         return res.dataValues
 
@@ -12,7 +12,7 @@ class UserService{
     
     async getUserInfo(userid){
         const res = await User.findOne({
-            attributes:['userid','user_name'],
+            attributes:['userid','user_number','password','user_point'],
             where:userid
         })
 // console.log(res)
