@@ -20,6 +20,17 @@ class UserService{
 
     }
 
+    async updateById({userid,password}){
+      
+        const res = await User.update({password},{where:{userid}} )
+
+
+        console.log(res[0])
+    
+
+      return  res[0]>0 ? true : false
+    }
+
 
 }
 

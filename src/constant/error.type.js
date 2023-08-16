@@ -29,5 +29,20 @@ module.exports = {
         message:'用户登陆出错',
         result:'',
       },
+      tokenExpiredError:{
+        code:'10101',
+        message:'token已过期',
+        result:'',
+      },
+      invalidToken:{
+        code:'10102',
+        message:'无效的token',
+        result:'',
+      },
+      changePasswordError:{
+        code:'10007',
+        message:'先密码不能与原密码一致',
+        result:'',
+      },
 
 }

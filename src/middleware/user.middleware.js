@@ -39,6 +39,9 @@ const verifyUser = async (ctx,next)=>{
     //   console.error('用户id已经存在', { userid })
     //   ctx.app.emit('error', userAlreadyExisted, ctx)
     //   return
+
+
+    //id已经存在了，所以直接验证id和密码是否正确
     const {userid, password } = ctx.request.body
 
 
@@ -57,7 +60,7 @@ console.log(password,res.password)
         return ctx.app.emit('error',userLoginError,ctx)
     }
 
-
+//id和密码都正确，于是直接登录
     try{
         const {password,...loginres} = res
         ctx.body = {
