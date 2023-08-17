@@ -41,7 +41,22 @@ module.exports = {
       },
       changePasswordError:{
         code:'10007',
-        message:'先密码不能与原密码一致',
+        message:'修改密码出错',
+        result:'',
+      },
+      unSupportedFileType:{
+        code:'10202',
+        message:'不支持的文件格式',
+        result:'',
+      },
+      fileUploadError:{
+        code:'10201',
+        message:'商品图片上传失败',
+        result:'',
+      },
+      publishGoodsError:{
+        code:'10204',
+        message:'发布商品失败',
         result:'',
       },
 
