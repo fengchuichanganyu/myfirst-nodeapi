@@ -18,9 +18,9 @@ const { userFormateError,
 
 const userValidator = async (ctx,next)=>{
    
-    const { user_number , password, userid} = ctx.request.body
-    if(!user_number || !password ||!userid){
-        console.error('学号或者密码或用户id为空',ctx.request.body)
+    const { password, userid} = ctx.request.body
+    if(!password ||!userid){
+        console.error('密码或用户id为空',ctx.request.body)
         ctx.app.emit('error',userFormateError,ctx)
         return 
     }

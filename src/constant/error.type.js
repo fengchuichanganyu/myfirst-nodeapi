@@ -1,7 +1,7 @@
 module.exports = {
     userFormateError:{
         code:'10001',
-        message:'用户名或者密码或用户id为空',
+        message:'密码或用户id为空',
         result:'',
     },
     userAlreadyExisted:{
@@ -59,5 +59,11 @@ module.exports = {
         message:'发布商品失败',
         result:'',
       },
+      invalidTasksId:{
+        code:'10205',
+        message:'无效的任务id',
+        result:''
+      },
+     
 
 }

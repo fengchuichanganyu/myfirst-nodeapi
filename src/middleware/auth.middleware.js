@@ -12,6 +12,7 @@ const auth =  async (ctx,next)=>{
         // console.log(JWT_SECRET)
 
         const user = jwt.verify(token,JWT_SECRET)
+        
          ctx.state.user = user
 
     }catch(err){
