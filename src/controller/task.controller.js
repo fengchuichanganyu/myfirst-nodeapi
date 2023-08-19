@@ -18,7 +18,7 @@ class TaskController{
      async upload(ctx,next){
         
         const {file} = ctx.request.files
-        // console.log(ctx.request.files)
+        console.log(ctx.request.files)
         const fileTypes = ['image/jpeg','image/png','image/jpg']
 
         if(file){
@@ -81,8 +81,8 @@ class TaskController{
     }
 
     async remove(ctx,next){
-        // console.log(ctx.request.params.taskid)
-        const res =  await removeTasks(ctx,ctx.state.user.userid,ctx.request.params.taskid)
+        console.log(ctx.request.params.task_id)
+        const res =  await removeTasks(ctx,ctx.state.user.userid,ctx.request.params.task_id)
 // console.log(res)
        if(res){
         ctx.body = {

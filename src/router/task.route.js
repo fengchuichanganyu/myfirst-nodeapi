@@ -21,7 +21,7 @@ router.get('/detail',auth,findAllDetail)
 router.get('/',auth,findAll)
 
 //取消发布任务
-router.delete('/:taskid',auth,remove)
+router.delete('/:task_id',auth,remove)
 
 //查询该用户发布的任务
 router.get('/mypublish',auth,findMyPublish)

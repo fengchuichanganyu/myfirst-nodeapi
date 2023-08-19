@@ -30,17 +30,17 @@ class TaskService{
       return titles 
     }
 
-    async removeTasks(ctx,userid,id){
+    async removeTasks(ctx,userid,task_id){
         const res = await Tasks.findOne({
             attributes:['userid'],
-            where:{id}
+            where:{task_id}
         })
         // console.log(res.dataValues)
-        const task = await Tasks.findOne({ where: { id } });
+        const task = await Tasks.findOne({ where: { task_id } });
 
         if (task) {
             if (res.dataValues.userid === userid) {
-                const del = await Tasks.destroy({ where: { id } });
+                const del = await Tasks.destroy({ where: { task_id } });
                 console.log(del);
                 console.log('Task deleted successfully.');
 

@@ -64,6 +64,11 @@ module.exports = {
         message:'无效的任务id',
         result:''
       },
-     
+      collectFormatError:{
+        code:'10301',
+        message:'收藏任务数据格式错误',
+        result:'',
+      },
+      
 
 }

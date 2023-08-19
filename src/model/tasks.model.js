@@ -43,7 +43,4 @@ const Tasks = seq.define('mf_tasks', {
 
 // Tasks.sync({ force: true })
 
-
-
-
 module.exports = Tasks
