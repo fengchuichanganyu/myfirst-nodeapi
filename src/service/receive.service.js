@@ -1,19 +1,19 @@
-const Collects = require('../model/collects.model')
+const Receives = require('../model/receive.model')
 const Tasks = require('../model/tasks.model')
 
-class CollectService{
+class ReceiveService{
     async created(userid,task_id){
-        return await Collects.create({
+        return await Receives.create({
             userid,
             task_id
          })
     }
-       
-    async findCollects(ctx,pageNum ,pageSize){
+
+    async findReceives(ctx,pageNum ,pageSize){
         const userid = ctx.state.user.userid
 
         const offset = (pageNum - 1) *pageSize
-       const {count , rows} =  await Collects.findAndCountAll({
+       const {count , rows} =  await Receives.findAndCountAll({
             attributes:['userid'],
             where:{userid},
             offset:offset,
@@ -32,13 +32,12 @@ class CollectService{
         }
     }
 
-    async removeCollect(task_id,userid){
-        return Collects.destroy({
+    async removeReceive(task_id,userid){
+        return Receives.destroy({
             where:{task_id:task_id,userid:userid},
         })
 
     }
-      
 }
 
-module.exports = new CollectService()
+module.exports = new ReceiveService()

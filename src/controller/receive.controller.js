@@ -1,6 +1,6 @@
-const { created ,findCollects ,removeCollect} = require('../service/collects.service')
+const { created,findReceives ,removeReceive} = require('../service/receive.service')
 
-class CollectController{
+class ReceiveController{
     async add(ctx){
         const userid = ctx.state.user.userid
         const task_id = ctx.request.body.id
@@ -8,19 +8,19 @@ class CollectController{
      const res =  await created(userid,task_id)
      ctx.body = {
          code:'0',
-         message:'添加到收藏成功',
+         message:'添加到接单成功',
          result:res,
      }
  }
- 
+
     async findAll(ctx){
-        
+            
         const {pageNum = 1 ,pageSize = 10} = ctx.request.query
-        const res = await findCollects(ctx,pageNum ,pageSize)
-    
+        const res = await findReceives(ctx,pageNum ,pageSize)
+
         ctx.body  ={
             code:'0',
-            message:'获取收藏列表成功',
+            message:'获取接单列表成功',
             result:res,
         }
     }
@@ -29,11 +29,11 @@ class CollectController{
         const {task_id} = ctx.request.body
         const userid = ctx.state.user.userid
 
-        const res = await removeCollect(task_id,userid)
+        const res = await removeReceive(task_id,userid)
         if(res ==0){
             ctx.body = {
                 code:'0',
-                message:'收藏中无此任务',
+                message:'接单中无此任务',
                 result:res,
             }  
         }else{
@@ -46,4 +46,4 @@ class CollectController{
     }
 }
 
-module.exports = new CollectController()
+module.exports = new ReceiveController()

@@ -12,6 +12,8 @@ const { createGoods,
     findTasks ,
     removeTasks,
     findMyPublishTasks,
+    findOnGoingTasks,
+    findFinishedTasks,
 } = require('../service/tasks.service')
 
 class TaskController{
@@ -40,7 +42,7 @@ class TaskController{
         await next()
      }
 
-     async create(ctx,next){
+     async create(ctx){
         try{
             const userid = ctx.state.user.userid
             const { file ,title} = ctx.request.files
@@ -62,7 +64,7 @@ class TaskController{
           }
      }
 
-     async findAllDetail(ctx,next){
+     async findAllDetail(ctx){
          //1.解析pagenum和pageSize
         const { pageNum = 1, pageSize = 10} = ctx.request.query
         //2.调用数据处理的相关方法
@@ -71,7 +73,7 @@ class TaskController{
         ctx.body =res
      }
 
-     async findAll(ctx,next){
+     async findAll(ctx){
         //1.解析pagenum和pageSize
        const { pageNum = 1, pageSize = 10} = ctx.request.query
        //2.调用数据处理的相关方法
@@ -80,7 +82,7 @@ class TaskController{
        ctx.body =res
     }
 
-    async remove(ctx,next){
+    async remove(ctx){
         console.log(ctx.request.params.task_id)
         const res =  await removeTasks(ctx,ctx.state.user.userid,ctx.request.params.task_id)
 // console.log(res)
@@ -95,7 +97,7 @@ class TaskController{
           }
     }
 
-    async findMyPublish(ctx,next){
+    async findMyPublish(ctx){
         //1.解析pagenum和pageSize
        const { pageNum = 1, pageSize = 10} = ctx.request.query
        //2.调用数据处理的相关方法
@@ -103,6 +105,24 @@ class TaskController{
        //3.返回结果
        ctx.body =res
     }
+
+    async findOnGoing(ctx){
+         //1.解析pagenum和pageSize
+       const { pageNum = 1, pageSize = 10} = ctx.request.query
+       //2.调用数据处理的相关方法
+       const res =  await findOnGoingTasks(pageNum, pageSize)
+       //3.返回结果
+       ctx.body =res
+    }
+
+    async findFinished(ctx){
+        //1.解析pagenum和pageSize
+      const { pageNum = 1, pageSize = 10} = ctx.request.query
+      //2.调用数据处理的相关方法
+      const res =  await findFinishedTasks(pageNum, pageSize)
+      //3.返回结果
+      ctx.body =res
+   }
 }
 
 module.exports = new TaskController()

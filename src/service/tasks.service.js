@@ -72,6 +72,38 @@ class TaskService{
             list:rows,
         }
     }
+
+    async findOnGoingTasks(pageNum, pageSize){
+        const offset = (pageNum -1) *pageSize
+        const {count , rows } = await Tasks.findAndCountAll({
+            where:{status:0},
+             offset: offset,
+              limit: pageSize * 1
+            })
+
+        return {
+                pageNum,
+                pageSize,
+                total:count,
+                list:rows,
+            }
+    }
+
+    async findFinishedTasks(pageNum, pageSize){
+        const offset = (pageNum -1) *pageSize
+        const {count , rows } = await Tasks.findAndCountAll({
+            where:{status:1},
+             offset: offset,
+              limit: pageSize * 1
+            })
+
+        return {
+                pageNum,
+                pageSize,
+                total:count,
+                list:rows,
+            }
+    }
 }
 
 module.exports = new TaskService()

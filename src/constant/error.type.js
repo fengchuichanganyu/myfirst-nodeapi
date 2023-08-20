@@ -66,7 +66,7 @@ module.exports = {
       },
       collectFormatError:{
         code:'10301',
-        message:'收藏任务数据格式错误',
+        message:'任务数据格式错误',
         result:'',
       },
       

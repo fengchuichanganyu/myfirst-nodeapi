@@ -8,7 +8,9 @@ const { upload,
     findAllDetail,
     findAll,
     remove,
-    findMyPublish
+    findMyPublish,
+    findOnGoing,
+    findFinished
 } = require('../controller/task.controller')
 
 //上传图片发布任务
@@ -25,5 +27,12 @@ router.delete('/:task_id',auth,remove)
 
 //查询该用户发布的任务
 router.get('/mypublish',auth,findMyPublish)
+
+//查询正在进行的任务
+router.get('/ongoing',auth,findOnGoing)
+
+//查询已完成的任务
+router.get('/finished',auth,findFinished)
+
 
 module.exports = router
